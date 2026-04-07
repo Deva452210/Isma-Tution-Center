@@ -136,9 +136,14 @@ const Testimonials = () => {
                 className="snap-center shrink-0 w-[85vw] sm:w-[320px] md:w-[360px] bg-[#F8F9FB] rounded-3xl p-6 sm:p-8 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-gray-100/50"
               >
                 <div>
-                  {/* Quotes Icon */}
-                  <div className="mb-5 sm:mb-6">
+                  {/* Quotes Icon & Rating */}
+                  <div className="flex justify-between items-center mb-5 sm:mb-6">
                     <Image src={quoteIcon} alt="Quote" className="w-7 h-7 sm:w-8 sm:h-8" />
+                    <div className="flex gap-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
                   </div>
                   <p className="text-gray-800 text-[15.5px] sm:text-[17px] font-medium leading-relaxed mb-8">
                     {testimonial.review}
