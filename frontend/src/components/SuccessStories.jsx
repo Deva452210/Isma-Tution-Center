@@ -7,6 +7,7 @@ import girlsImg from '../assets/girlsimg.png';
 import boy1 from "../assets/boy-1.png";
 import boy2 from "../assets/boy-2.png";
 import boy3 from "../assets/boy-3.png";
+import boy4 from "../assets/boy-4.png";
 
 // ✅ DATA (added image for male students)
 const achievers = [
@@ -38,7 +39,7 @@ const achievers = [
     name: "Boy 4",
     class: "10th",
     gender: "Male",
-    // image: "/students/boy4.png",
+    image: boy4,
     highlights: ["Maths: 99"],
     badge: "Maths Topper"
   },
