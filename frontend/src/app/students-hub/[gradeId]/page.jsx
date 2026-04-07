@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FileText, Download, FolderOpen, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useGetMaterialsQuery } from '../../../redux/api/materialsApi';
 
 export default function GradeMaterialPage({ params }) {
   const router = useRouter();
@@ -14,26 +15,11 @@ export default function GradeMaterialPage({ params }) {
   
   const subjects = ['Tamil', 'English', 'Maths', 'Science', 'Social Science'];
   
-  const [materials, setMaterials] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMaterials = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials?grade=${gradeId}&category=${activeTab}&subject=${activeSubject}`);
-        if (!res.ok) throw new Error('Failed to fetch');
-        const data = await res.json();
-        setMaterials(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchMaterials();
-  }, [gradeId, activeTab, activeSubject]);
+  const { data: materials = [], isLoading: loading, isFetching } = useGetMaterialsQuery({
+    grade: gradeId,
+    category: activeTab,
+    subject: activeSubject
+  });
 
   return (
     <div className="min-h-screen bg-gray-50/50 pb-16">
