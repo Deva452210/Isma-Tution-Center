@@ -69,7 +69,7 @@ export default function DashboardPage() {
       const fetchStatsAndLists = async () => {
         try {
           // Fetch Stats
-          const statsRes = await fetch('http://localhost:5000/api/stats');
+          const statsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/stats`);
           if (statsRes.ok) {
             const data = await statsRes.json();
             setStats(prev => ({
@@ -82,9 +82,9 @@ export default function DashboardPage() {
 
           // Fetch Lists
           const [usersRes, notesRes, pyqpRes] = await Promise.all([
-            fetch('http://localhost:5000/api/users'),
-            fetch('http://localhost:5000/api/materials?category=notes'),
-            fetch('http://localhost:5000/api/materials?category=pyqp')
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users`),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials?category=notes`),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials?category=pyqp`)
           ]);
 
           let students = [], notes = [], pyqp = [];
@@ -113,7 +113,7 @@ export default function DashboardPage() {
     setUploadStatus('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/materials', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(materialForm)
@@ -154,7 +154,7 @@ export default function DashboardPage() {
     setStudentStatus('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/signup', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(studentForm)
@@ -218,7 +218,7 @@ export default function DashboardPage() {
       const payload = { ...studentForm };
       if (!payload.password) delete payload.password;
       
-      const res = await fetch(`http://localhost:5000/api/users/${editingStudentId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/${editingStudentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -250,7 +250,7 @@ export default function DashboardPage() {
     setUploadStatus('');
 
     try {
-      const res = await fetch(`http://localhost:5000/api/materials/${editingMaterialId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials/${editingMaterialId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(materialForm)

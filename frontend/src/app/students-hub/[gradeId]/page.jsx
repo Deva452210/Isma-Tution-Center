@@ -21,7 +21,7 @@ export default function GradeMaterialPage({ params }) {
     const fetchMaterials = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/materials?grade=${gradeId}&category=${activeTab}&subject=${activeSubject}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/materials?grade=${gradeId}&category=${activeTab}&subject=${activeSubject}`);
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setMaterials(data);
