@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 249, 250;
+  --background-end-rgb: 255, 255, 255;
+  --brand-green: 0, 88, 74;
+
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: inherit;
+  /* will be set by Next.js font */
+}
+
+@layer utilities {
+  .text-brand {
+    color: rgb(var(--brand-green));
+  }
+
+  .bg-brand {
+    background-color: rgb(var(--brand-green));
+  }
+
+  .border-brand {
+    border-color: rgb(var(--brand-green));
+  }
+
+  /* Animations */
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
