@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "Isma Tuition Center",
     images: [
       {
-        url: "/isma-preview.png",
+        url: "https://isma-tution-center.vercel.app/isma-preview.png",
         width: 1200,
         height: 630,
         alt: "Isma Tuition Center",
