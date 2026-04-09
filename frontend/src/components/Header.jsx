@@ -146,40 +146,39 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
+        {/* Mobile Navigation Dropdown & Overlay */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-200 shadow-lg px-4 py-6 flex flex-col space-y-4 font-medium text-lg">
-            <Link
-              href="/students-hub"
-              className="flex w-full px-4 py-3 bg-gray-50 rounded-xl text-gray-800 hover:text-brand hover:bg-green-50 transition-all border border-transparent"
+          <>
+            <div
+              className="md:hidden fixed inset-0 top-20 bg-black/60 z-40"
               onClick={closeMenu}
-            >
-              Student's Hub
-            </Link>
-            <Link
-              href="/gallery"
-              className="flex w-full px-4 py-3 bg-gray-50 rounded-xl text-gray-800 hover:text-brand hover:bg-green-50 transition-all border border-transparent"
-              onClick={closeMenu}
-            >
-              Gallery
-            </Link>
+              aria-hidden="true"
+            />
+            <div className="md:hidden absolute top-20 left-0 w-full bg-gray-100 border-b border-gray-200 shadow-lg px-4 py-6 flex flex-col space-y-4 font-medium text-lg z-50">
+              <Link
+                href="/students-hub"
+                className="flex w-full px-4 py-3 bg-gray-50 rounded-xl  text-sm font-semibold text-gray-800 hover:text-brand hover:bg-green-50 transition-all border border-transparent"
+                onClick={closeMenu}
+              >
+                Student's Hub
+              </Link>
+              {/* <Link
+                href="/gallery"
+                className="flex w-full px-4 py-3 bg-gray-50 rounded-xl text-gray-800 hover:text-brand hover:bg-green-50 transition-all border border-transparent"
+                onClick={closeMenu}
+              >
+                Gallery
+              </Link> */}
 
-            <div className="pt-4 border-t border-gray-100 flex flex-col space-y-4">
-              <a href="tel:+919043303030" className="flex items-center justify-center w-full px-4 py-3 rounded-xl border border-brand text-brand hover:bg-green-50 transition-colors font-semibold">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 90433 03030
-              </a>
-              {!userName && (
-                <Link
-                  href="/signup"
-                  className="flex items-center justify-center w-full px-4 py-3 rounded-xl bg-brand text-white font-semibold text-center hover:bg-green-800 transition-colors"
-                  onClick={closeMenu}
-                >
-                  Sign Up For Free
-                </Link>
-              )}
+              <div className="pt-4 border-t border-gray-100 flex flex-col space-y-4">
+                <a href="tel:+919043303030" className="flex items-center justify-center w-full px-4 py-3 rounded-xl border border-brand text-brand hover:bg-green-50 transition-colors font-semibold">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 90433 03030
+                </a>
+
+              </div>
             </div>
-          </div>
+          </>
         )}
       </header>
 

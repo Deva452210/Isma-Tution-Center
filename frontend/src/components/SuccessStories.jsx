@@ -91,19 +91,19 @@ const achievers = [
 // 🎨 STYLE MAP (colors per category)
 const styleMap = {
   elite: {
-    bg: "from-[#064e3b] via-[#022c22] to-black",
+    bg: "from-[#362A72] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   achiever: {
-    bg: "from-[#064e3b] via-[#022c22] to-black",
+    bg: "from-[#362A72] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   maths: {
-    bg: "from-[#064e3b] via-[#022c22] to-black",
+    bg: "from-[#362A72] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"

@@ -1,6 +1,8 @@
 import React from 'react';
 
 import heroImg from '../assets/hero.webp';
+import Link from 'next/link';
+import EnrollmentCTA from './EnrollmentCTA';
 
 const Hero = () => {
   return (
@@ -21,12 +23,23 @@ const Hero = () => {
             A dedicated Maths tuition center for 10th, 11th, and 12th students focused on concept clarity and top board exam scores.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-brand text-white font-semibold rounded shadow-lg hover:shadow-xl hover-scale text-lg">
-              Explore Us
-            </button>
-            <button className="px-8 py-4 bg-white text-gray-900 border border-gray-300 font-semibold rounded shadow hover:bg-gray-50 transition-colors text-lg">
+            <button className="px-8 py-4 bg-white text-gray-900  font-semibold rounded shadow hover:shadow-sm text-lg">
               Contact Us
             </button>
+
+            <Link href="/students-hub" >
+              <button className=" w-full px-8 py-4 bg-brand text-white  font-semibold rounded shadow transition-colors text-lg flex items-center justify-center gap-2">
+                Explore Student Hub
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button></Link>
           </div>
 
           {/* <div className="mt-12 flex items-center space-x-8">
