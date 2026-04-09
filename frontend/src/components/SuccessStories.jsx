@@ -244,7 +244,7 @@ const SuccessStories = () => {
     <section className="py-10 bg-[#FAFBFC]">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-black">
-          Top <span className="text-emerald-600">Achievers</span>
+          Top <span className="text-[#362A72]">Achievers</span>
         </h2>
       </div>
 

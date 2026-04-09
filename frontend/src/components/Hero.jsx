@@ -1,10 +1,13 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 
 import heroImg from '../assets/hero.webp';
 import Link from 'next/link';
-import EnrollmentCTA from './EnrollmentCTA';
+import EnrollmentModal from './EnrollmentModal';
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="relative w-full overflow-hidden bg-gray-50 flex items-center" style={{ minHeight: '600px' }}>
       {/* Background with subtle gradient or image placeholder */}
@@ -23,7 +26,10 @@ const Hero = () => {
             A dedicated Maths tuition center for 10th, 11th, and 12th students focused on concept clarity and top board exam scores.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-white text-gray-900  font-semibold rounded shadow hover:shadow-sm text-lg">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="px-8 py-4 bg-white text-gray-900  font-semibold rounded shadow hover:shadow-sm text-lg"
+            >
               Contact Us
             </button>
 
@@ -66,6 +72,8 @@ const Hero = () => {
           <img className="w-full h-full object-cover" src={heroImg.src} alt="heroImg" />
         </div>
       </div>
+      
+      <EnrollmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
