@@ -88,7 +88,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex flex-1 justify-center space-x-8">
             <Link href="/students-hub" className="text-gray-800 font-medium hover:text-brand transition-colors">Student's Hub</Link>
-            <Link href="/gallery" className="text-gray-800 font-medium hover:text-brand transition-colors">Graduates</Link>
+            {/* <Link href="/gallery" className="text-gray-800 font-medium hover:text-brand transition-colors">Graduates</Link> */}
           </nav>
 
           {/* Contact and Auth Actions */}
@@ -171,9 +171,9 @@ const Header = () => {
               </Link> */}
 
               <div className="pt-4 border-t border-gray-100 flex flex-col space-y-4">
-                <a href="tel:+919043303030" className="flex items-center justify-center w-full px-4 py-3 rounded-xl border border-brand text-brand hover:bg-green-50 transition-colors font-semibold">
+                <a href="tel:7358870782" className="flex items-center justify-center w-full px-4 py-3 rounded-xl border border-brand text-brand hover:bg-green-50 transition-colors font-semibold">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call 90433 03030
+                  Call 73588 70782
                 </a>
 
               </div>
