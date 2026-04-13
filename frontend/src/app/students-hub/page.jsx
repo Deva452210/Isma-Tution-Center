@@ -22,17 +22,17 @@ const StudentsHubPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
         {grades.map((grade, index) => (
           <Link href={`/students-hub/grade-${grade.level.replace('th', '')}`} key={index} className="group">
-            <div className={`bg-white rounded-3xl p-6 border border-gray-100 shadow-md ${grade.shadow} hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2 relative overflow-hidden flex flex-col h-full`}>
+            <div className={`bg-white rounded-3xl p-6 border border-gray-100 shadow-md ${grade.shadow} md:hover:shadow-2xl transition-all duration-300 transform md:group-hover:-translate-y-2 relative overflow-hidden flex flex-col h-full`}>
               
               {/* Decorative Background Blob */}
-              <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full ${grade.color} opacity-10 group-hover:scale-150 transition-transform duration-500`}></div>
+              <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full ${grade.color} opacity-10 md:group-hover:scale-150 transition-transform duration-500`}></div>
 
               <div className="flex items-center justify-between mb-4 relative z-10">
                 <div className={`w-12 h-12 rounded-2xl ${grade.color} text-white flex items-center justify-center shadow-inner`}>
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors">
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center md:group-hover:bg-gray-100 transition-colors">
+                  <ArrowRight className="w-4 h-4 text-gray-400 md:group-hover:text-gray-900 transition-colors" />
                 </div>
               </div>
 

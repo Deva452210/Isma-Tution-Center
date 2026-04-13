@@ -12,11 +12,32 @@ import boy4 from "../assets/boy-4.png";
 // ✅ DATA (added image for male students)
 const achievers = [
   {
-    name: "Boy 1",
-    class: "10th & 11th",
+    name: "Suhaila",
+    class: "12th",
+    gender: "Female",
+    highlights: ["10th Score: 542/600", "Tamil: 96", "History: 92", "Commerce: 92", "Accountancy: 92"],
+    badge: "Top Performer"
+  },
+  {
+    name: "J. Yasmin Jariya",
+    class: "12th",
+    gender: "Female",
+    highlights: ["10th Score: 515/600", "Tamil: 97"],
+    badge: "Top Performer"
+  },
+  {
+    name: "Mohamed Thoufiq",
+    class: "10th & 12th",
     gender: "Male",
     image: boy1,
-    highlights: ["10th Score: 480/500", "Maths: 100", "English: 97", "Science: 96", "Tamil: 96"],
+    highlights: ["10th Score: 480/500", "Tamil : 96", "English : 97", "Maths : 100", "Science : 96"],
+    badge: "Top Performer"
+  },
+  {
+    name: "M.Ali Begam",
+    class: "10th & 12th",
+    gender: "Female",
+    highlights: ["10th Score: 471/500", "Tamil : 92", "English : 94", "Maths : 97", "Science : 96", "Social : 92"],
     badge: "Top Performer"
   },
   {
@@ -28,11 +49,25 @@ const achievers = [
     badge: "Achiever"
   },
   {
+    name: "M.Safrin Fathima",
+    class: "10th",
+    gender: "Female",
+    highlights: ["10th Score: 419/500", "Maths : 97", "Science : 93"],
+    badge: "Achiever"
+  },
+  {
     name: "Boy 3",
     class: "10th & 11th",
     gender: "Male",
     image: boy3,
     highlights: ["10th: 410/500", "English: 97", "11th: 411/600"],
+    badge: "Achiever"
+  },
+  {
+    name: "Roshan Beema",
+    class: "12th",
+    gender: "Female",
+    highlights: ["Computer : 91"],
     badge: "Achiever"
   },
   {
@@ -52,40 +87,14 @@ const achievers = [
     badge: "Maths Topper"
   },
   {
-    name: "Safrin Fathima",
+    name: "M.Shirrin Muhmina",
     class: "10th",
     gender: "Female",
-    highlights: ["Score: 419/500", "Maths: 97", "Science: 93"],
-    badge: "Top Performer"
-  },
-  {
-    name: "Shirrin Muhmina",
-    class: "10th",
-    gender: "Female",
-    highlights: ["Maths: 90"],
-    badge: "Achiever"
-  },
-  {
-    name: "Ali Begam",
-    class: "10th",
-    gender: "Female",
-    highlights: ["Score: 471/500", "Maths: 97", "Science: 96", "English: 94", "Tamil: 92"],
-    badge: "Top Performer"
-  },
-  {
-    name: "N. Suhaila",
-    class: "12th",
-    gender: "Female",
-    highlights: ["Score: 542/600"],
-    badge: "Top Performer"
-  },
-  {
-    name: "Yasmin Jariya",
-    class: "12th",
-    gender: "Female",
-    highlights: ["Score: 515/600", "Tamil: 97"],
-    badge: "Achiever"
+    highlights: ["Maths : 90"],
+    badge: "Maths Topper"
   }
+
+
 ];
 
 // 🎨 STYLE MAP (colors per category)

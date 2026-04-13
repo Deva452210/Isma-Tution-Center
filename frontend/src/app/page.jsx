@@ -14,7 +14,7 @@ export default function Home() {
       <StatsSection />
       <SuccessStories />
       <CoursesSection />
-      <LifeAtIsma />
+      {/* <LifeAtIsma /> */}
       <Testimonials />
       <StudentHubCTA />
 
