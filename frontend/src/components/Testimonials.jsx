@@ -133,7 +133,7 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="snap-center shrink-0 w-[85vw] sm:w-[320px] md:w-[360px] bg-[#F8F9FB] rounded-3xl p-6 sm:p-8 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-gray-100/50"
+                className="snap-center snap-always shrink-0 w-[85vw] sm:w-[320px] md:w-[360px] bg-[#F8F9FB] rounded-3xl p-6 sm:p-8 md:hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] md:hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-gray-100/50"
               >
                 <div>
                   {/* Quotes Icon & Rating */}

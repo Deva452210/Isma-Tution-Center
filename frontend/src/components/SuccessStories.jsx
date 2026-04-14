@@ -41,7 +41,7 @@ const achievers = [
     badge: "Top Performer"
   },
   {
-    name: "Boy 2",
+    name: "Mohamed subair",
     class: "11th",
     gender: "Male",
     image: boy2,
@@ -56,7 +56,7 @@ const achievers = [
     badge: "Achiever"
   },
   {
-    name: "Boy 3",
+    name: "Meeran Shahib",
     class: "10th & 11th",
     gender: "Male",
     image: boy3,
@@ -67,15 +67,15 @@ const achievers = [
     name: "Roshan Beema",
     class: "12th",
     gender: "Female",
-    highlights: ["Computer : 91"],
+    highlights: ["Computer : Computer-91"],
     badge: "Achiever"
   },
   {
-    name: "Boy 4",
+    name: "Mohamed Ismail",
     class: "10th",
     gender: "Male",
     image: boy4,
-    highlights: ["Maths: 99"],
+    highlights: ["Maths: Maths-99"],
     badge: "Maths Topper"
   },
   {
@@ -83,14 +83,14 @@ const achievers = [
     class: "10th",
     gender: "Male",
     // image: "/students/mohamed.png",
-    highlights: ["Maths: 95"],
+    highlights: ["Maths: Maths-95"],
     badge: "Maths Topper"
   },
   {
     name: "M.Shirrin Muhmina",
     class: "10th",
     gender: "Female",
-    highlights: ["Maths : 90"],
+    highlights: ["Maths : Maths-90"],
     badge: "Maths Topper"
   }
 

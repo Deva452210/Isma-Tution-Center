@@ -1,5 +1,6 @@
 import React from 'react';
 import { FileText, BookOpen, GraduationCap } from 'lucide-react';
+import Link from 'next/link';
 
 const CoursesSection = () => {
   const courses = [
@@ -30,7 +31,7 @@ const CoursesSection = () => {
   ];
 
   return (
-    <section className="py-0 bg-gray-50">
+    <section className="pb-5 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Offerings</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-16 text-lg">
@@ -39,16 +40,16 @@ const CoursesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {courses.map((course, idx) => (
-            <div key={idx} className={`relative p-8 rounded-2xl border ${course.borderColor} bg-white shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-left flex flex-col`}>
+            <Link href="/students-hub" key={idx} className={`group relative p-8 rounded-2xl border ${course.borderColor} bg-white shadow-sm md:hover:shadow-xl transition-all duration-300 transform md:hover:-translate-y-2 text-left flex flex-col`}>
               <div className={`w-20 h-20 rounded-2xl ${course.color} flex items-center justify-center mb-6`}>
                 {course.icon}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">{course.title}</h3>
               <p className="text-gray-600 leading-relaxed mb-8 flex-grow">{course.description}</p>
-              <a href="#" className="font-bold text-brand hover:underline inline-flex items-center">
+              <span className="font-bold text-brand group-hover:underline inline-flex items-center">
                 {course.link} <span className="ml-2">→</span>
-              </a>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
       </div>
