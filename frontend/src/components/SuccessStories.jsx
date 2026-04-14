@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import { Trophy, Award, Target, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import girlsImg from '../assets/girlsimg.png';
@@ -9,111 +10,16 @@ import boy2 from "../assets/boy-2.png";
 import boy3 from "../assets/boy-3.png";
 import boy4 from "../assets/boy-4.png";
 
-// ✅ DATA (added image for male students)
-const achievers = [
-  {
-    name: "Suhaila",
-    class: "12th",
-    gender: "Female",
-    highlights: ["10th Score: 542/600", "Tamil: 96", "History: 92", "Commerce: 92", "Accountancy: 92"],
-    badge: "Top Performer"
-  },
-  {
-    name: "J. Yasmin Jariya",
-    class: "12th",
-    gender: "Female",
-    highlights: ["10th Score: 515/600", "Tamil: 97"],
-    badge: "Top Performer"
-  },
+import achieversData from '../data/data.json';
 
-  {
-    name: "Roshan Beema",
-    class: "12th",
-    gender: "Female",
-    highlights: ["Computer : Computer-91"],
-    badge: "Top Performer"
-  },
-  {
-    name: "Mohamed Thoufiq",
-    class: "10th",
-    gender: "Male",
-    image: boy1,
-    highlights: ["10th Score: 480/500", "Tamil : 96", "English : 97", "Maths : 100", "Science : 96"],
-    badge: "Top Performer"
-  },
-  {
-    name: "M.Ali Begam",
-    class: "10th",
-    gender: "Female",
-    highlights: ["10th Score: 471/500", "Tamil : 92", "English : 94", "Maths : 97", "Science : 96", "Social : 92"],
-    badge: "Top Performer"
-  },
-  {
-    name: "Meeran Shahib",
-    class: "10th & 11th",
-    gender: "Male",
-    image: boy3,
-    highlights: ["10th: 410/500", "English: 97", "11th: 411/600"],
-    badge: "Top Performer"
-  },
-  {
-    name: "Mohamed subair",
-    class: "11th",
-    gender: "Male",
-    image: boy2,
-    highlights: ["Score: 450/600"],
-    badge: "Achiever"
-  },
-  {
-    name: "Mohamed Thoufiq",
-    class: "11th",
-    gender: "Male",
-    image: boy1,
-    highlights: ["10th Score: -/600"],
-    badge: "Achiever"
-  },
-  {
-    name: "M.Ali Begam",
-    class: "11th",
-    gender: "Female",
-    highlights: ["10th Score: -/600"],
-    badge: "Achiever"
-  },
+const imageMap = {
+  boy1, boy2, boy3, boy4
+};
 
-  {
-    name: "Mohamed Ismail",
-    class: "10th",
-    gender: "Male",
-    image: boy4,
-    highlights: ["Maths: Maths-99"],
-    badge: "Maths Topper"
-  },
-  {
-    name: "M.Safrin Fathima",
-    class: "10th",
-    gender: "Female",
-    highlights: ["Maths : Maths-97"],
-    badge: "Maths Topper"
-  },
-
-  {
-    name: "Mohamed Hussain",
-    class: "10th",
-    gender: "Male",
-    // image: "/students/mohamed.png",
-    highlights: ["Maths: Maths-95"],
-    badge: "Maths Topper"
-  },
-  {
-    name: "M.Shirrin Muhmina",
-    class: "10th",
-    gender: "Female",
-    highlights: ["Maths : Maths-90"],
-    badge: "Maths Topper"
-  }
-
-
-];
+const achievers = achieversData.map(a => ({
+  ...a,
+  image: a.imageId ? imageMap[a.imageId] : null
+}));
 
 // 🎨 STYLE MAP (colors per category)
 const styleMap = {
@@ -278,6 +184,15 @@ const SuccessStories = () => {
       <CarouselLayer title="Top Performers" items={processed.filter(a => a.badge === "Top Performer")} type="elite" />
       <CarouselLayer title="Outstanding Achievers" items={processed.filter(a => a.badge === "Achiever")} type="achiever" />
       <CarouselLayer title="Maths Excellence" items={processed.filter(a => a.badge === "Maths Topper")} type="maths" />
+
+      {/* View All Achievers Button */}
+      <div className="flex justify-center mt-12 pb-6">
+        <Link href="/all-achievers">
+          <button className="bg-[#362A72] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-2xl transform hover:-translate-y-1 flex items-center gap-2">
+            View All Achievers <ChevronRight className="w-5 h-5" />
+          </button>
+        </Link>
+      </div>
     </section>
   );
 };

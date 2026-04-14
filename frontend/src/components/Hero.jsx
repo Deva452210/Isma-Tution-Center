@@ -19,14 +19,14 @@ const Hero = () => {
             Admissions Open 2026
           </span>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Your Gateway for your <br className="hidden md:block" />
-            <span className="text-brand">Dream to Success</span>
+            Your Gateway from<br className="hidden md:block" />
+            <span className="text-brand">Dreams to Success</span>
           </h1>
           <p className="text-lg text-gray-600 mb-8 max-w-xl">
-            A dedicated Maths tuition center for 10th, 11th, and 12th students focused on concept clarity and top board exam scores.
+            A dedicated tuition center for students from 1st to 12th grade (CBSE & State Board), focused on strong fundamentals, concept clarity, and top academic results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button 
+            <button
               onClick={() => setIsModalOpen(true)}
               className="px-8 py-4 bg-white text-gray-900  font-semibold rounded shadow hover:shadow-sm text-lg"
             >
@@ -72,7 +72,7 @@ const Hero = () => {
           <img className="w-full h-full object-cover" src={heroImg.src} alt="heroImg" />
         </div>
       </div>
-      
+
       <EnrollmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );

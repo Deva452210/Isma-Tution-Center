@@ -12,13 +12,13 @@ const roboto = Roboto({
 
 export const metadata = {
   title: 'Isma Tution Center',
-  description: 'A dedicated Maths tuition center for 10th, 11th, and 12th students focused on concept clarity and top board exam scores.',
+  description: 'A dedicated tuition center for students from 1st to 12th grade (CBSE & State Board), focused on strong fundamentals, concept clarity, and top academic results.',
   icons: {
     icon: '/Favicon-Isma.png',
   },
   openGraph: {
     title: "Isma Tuition Center",
-    description: "A dedicated Maths tuition center for 10th, 11th, and 12th students focused on concept clarity and top board exam scores.",
+    description: "A dedicated tuition center for students from 1st to 12th grade (CBSE & State Board), focused on strong fundamentals, concept clarity, and top academic results.",
     url: "https://isma-tution-center.vercel.app",
     siteName: "Isma Tuition Center",
     images: [

@@ -1,0 +1,148 @@
+[
+  {
+    "name": "Suhaila",
+    "class": "12th",
+    "gender": "Female",
+    "highlights": [
+      "10th Score: 542/600",
+      "Tamil: 96",
+      "History: 92",
+      "Commerce: 92",
+      "Accountancy: 92"
+    ],
+    "badge": "Top Performer",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "J. Yasmin Jariya",
+    "class": "12th",
+    "gender": "Female",
+    "highlights": [
+      "10th Score: 515/600",
+      "Tamil: 97"
+    ],
+    "badge": "Top Performer",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Roshan Beema",
+    "class": "12th",
+    "gender": "Female",
+    "highlights": [
+      "Computer : Computer-91"
+    ],
+    "badge": "Top Performer",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Sheik Faizal",
+    "class": "12th",
+    "gender": "Male",
+    "highlights": [
+      "10th Score: 420/500"
+    ],
+    "badge": "Top Performer",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Ahmed Rila",
+    "class": "12th",
+    "gender": "Female",
+    "highlights": [
+      "10th Score: 414/500"
+    ],
+    "badge": "Top Performer",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Ali Begam",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "11th Score: 525/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Mohamed Thoufiq",
+    "class": "11th",
+    "gender": "Male",
+    "highlights": [
+      "Score: 518/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Mohamed subair",
+    "class": "11th",
+    "gender": "Male",
+    "highlights": [
+      "11th Score: 450/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Safrin Fathima",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "11th Score: 435/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Meera Shahif",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "11th Score: 411/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Mohamed Ismail",
+    "class": "10th",
+    "gender": "Male",
+    "imageId": "boy4",
+    "highlights": [
+      "Maths: Maths-99"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "M.Safrin Fathima",
+    "class": "10th",
+    "gender": "Female",
+    "highlights": [
+      "Maths : Maths-97"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Mohamed Hussain",
+    "class": "10th",
+    "gender": "Male",
+    "highlights": [
+      "Maths: Maths-95"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "M.Shirrin Muhmina",
+    "class": "10th",
+    "gender": "Female",
+    "highlights": [
+      "Maths : Maths-90"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  }
+]

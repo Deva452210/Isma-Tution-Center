@@ -5,7 +5,7 @@ import Link from 'next/link';
 const CoursesSection = () => {
   const courses = [
     {
-      title: "Offline Classes (8th–12th)",
+      title: "Offline Classes (1st–12th)",
       description: "Structured classroom learning with expert guidance for school students.",
       icon: <GraduationCap className="w-10 h-10 text-brand" />,
       color: "bg-orange-50",
