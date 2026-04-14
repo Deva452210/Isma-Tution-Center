@@ -71,6 +71,7 @@
     "highlights": [
       "Score: 518/600"
     ],
+    "imageId": "boy1",
     "badge": "Achiever",
     "batch": "2024-2025"
   },
@@ -81,6 +82,7 @@
     "highlights": [
       "11th Score: 450/600"
     ],
+    "imageId": "boy2",
     "badge": "Achiever",
     "batch": "2024-2025"
   },
@@ -97,10 +99,11 @@
   {
     "name": "Meera Shahif",
     "class": "11th",
-    "gender": "Female",
+    "gender": "Male",
     "highlights": [
       "11th Score: 411/600"
     ],
+    "imageId": "boy3",
     "badge": "Achiever",
     "batch": "2024-2025"
   },

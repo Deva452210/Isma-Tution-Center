@@ -71,6 +71,7 @@
     "highlights": [
       "Score: 518/600"
     ],
+    "imageId": "boy1",
     "badge": "Achiever",
     "batch": "2024-2025"
   },
@@ -81,6 +82,7 @@
     "highlights": [
       "11th Score: 450/600"
     ],
+    "imageId": "boy2",
     "badge": "Achiever",
     "batch": "2024-2025"
   },
@@ -101,6 +103,7 @@
     "highlights": [
       "11th Score: 411/600"
     ],
+    "imageId": "boy3",
     "badge": "Achiever",
     "batch": "2024-2025"
   },
@@ -152,13 +155,14 @@
     "highlights": [
       "480/500"
     ],
+    "imageId": "boy1",
     "badge": "Maths Topper",
     "batch": "2023-2024"
   },
   {
     "name": "Ali Begam",
     "class": "10th",
-    "gender": "Male",
+    "gender": "Female",
     "highlights": [
       "471/500"
     ],
@@ -182,6 +186,7 @@
     "highlights": [
       "414/500"
     ],
+    "imageId": "boy4",
     "badge": "Maths Topper",
     "batch": "2023-2024"
   },
@@ -202,6 +207,7 @@
     "highlights": [
       "410/500"
     ],
+    "imageId": "boy3",
     "badge": "Maths Topper",
     "batch": "2023-2024"
   }
