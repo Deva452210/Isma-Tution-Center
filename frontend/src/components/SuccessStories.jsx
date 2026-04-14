@@ -253,11 +253,11 @@ const SuccessStories = () => {
     <section className="py-10 bg-[#FAFBFC]">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-black">
-          Top <span className="text-[#362A72]">Achievers</span>
+          Our <span className="text-[#362A72]">Achievers</span>
         </h2>
       </div>
 
-      <CarouselLayer title="Elite Top Performers" items={processed.filter(a => a.badge === "Top Performer")} type="elite" />
+      <CarouselLayer title="Top Performers" items={processed.filter(a => a.badge === "Top Performer")} type="elite" />
       <CarouselLayer title="Outstanding Achievers" items={processed.filter(a => a.badge === "Achiever")} type="achiever" />
       <CarouselLayer title="Maths Excellence" items={processed.filter(a => a.badge === "Maths Topper")} type="maths" />
     </section>
