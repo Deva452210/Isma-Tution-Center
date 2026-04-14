@@ -10,7 +10,7 @@ const StatsSection = () => {
       icon: <Users className="w-6 h-6 text-brand" />
     },
     {
-      title: "30+",
+      title: "40+",
       subtitle: "Students Trained",
 
       icon: <Users className="w-6 h-6 text-brand" />

@@ -25,9 +25,17 @@ const achievers = [
     highlights: ["10th Score: 515/600", "Tamil: 97"],
     badge: "Top Performer"
   },
+
+  {
+    name: "Roshan Beema",
+    class: "12th",
+    gender: "Female",
+    highlights: ["Computer : Computer-91"],
+    badge: "Top Performer"
+  },
   {
     name: "Mohamed Thoufiq",
-    class: "10th & 12th",
+    class: "10th",
     gender: "Male",
     image: boy1,
     highlights: ["10th Score: 480/500", "Tamil : 96", "English : 97", "Maths : 100", "Science : 96"],
@@ -35,9 +43,17 @@ const achievers = [
   },
   {
     name: "M.Ali Begam",
-    class: "10th & 12th",
+    class: "10th",
     gender: "Female",
     highlights: ["10th Score: 471/500", "Tamil : 92", "English : 94", "Maths : 97", "Science : 96", "Social : 92"],
+    badge: "Top Performer"
+  },
+  {
+    name: "Meeran Shahib",
+    class: "10th & 11th",
+    gender: "Male",
+    image: boy3,
+    highlights: ["10th: 410/500", "English: 97", "11th: 411/600"],
     badge: "Top Performer"
   },
   {
@@ -49,27 +65,21 @@ const achievers = [
     badge: "Achiever"
   },
   {
-    name: "M.Safrin Fathima",
-    class: "10th",
-    gender: "Female",
-    highlights: ["10th Score: 419/500", "Maths : 97", "Science : 93"],
-    badge: "Achiever"
-  },
-  {
-    name: "Meeran Shahib",
-    class: "10th & 11th",
+    name: "Mohamed Thoufiq",
+    class: "11th",
     gender: "Male",
-    image: boy3,
-    highlights: ["10th: 410/500", "English: 97", "11th: 411/600"],
+    image: boy1,
+    highlights: ["10th Score: -/600"],
     badge: "Achiever"
   },
   {
-    name: "Roshan Beema",
-    class: "12th",
+    name: "M.Ali Begam",
+    class: "11th",
     gender: "Female",
-    highlights: ["Computer : Computer-91"],
+    highlights: ["10th Score: -/600"],
     badge: "Achiever"
   },
+
   {
     name: "Mohamed Ismail",
     class: "10th",
@@ -78,6 +88,14 @@ const achievers = [
     highlights: ["Maths: Maths-99"],
     badge: "Maths Topper"
   },
+  {
+    name: "M.Safrin Fathima",
+    class: "10th",
+    gender: "Female",
+    highlights: ["Maths : Maths-97"],
+    badge: "Maths Topper"
+  },
+
   {
     name: "Mohamed Hussain",
     class: "10th",
