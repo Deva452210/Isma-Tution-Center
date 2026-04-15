@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ReduxProvider from '../redux/ReduxProvider';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
           {/* <Footer /> */}
         </ReduxProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
     </html>
   );
 }
