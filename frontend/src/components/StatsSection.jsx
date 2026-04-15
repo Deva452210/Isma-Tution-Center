@@ -17,7 +17,7 @@ const StatsSection = () => {
     },
     {
       title: "10+",
-      subtitle: "100/100 in Maths",
+      subtitle: "above 90 marks in Maths",
 
       icon: <Award className="w-6 h-6 text-brand" />
     },

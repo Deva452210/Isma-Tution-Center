@@ -47,7 +47,7 @@
   {
     "name": "Ahmed Rila",
     "class": "12th",
-    "gender": "Female",
+    "gender": "Male",
     "highlights": [
       "10th Score: 414/500"
     ],
@@ -59,7 +59,9 @@
     "class": "11th",
     "gender": "Female",
     "highlights": [
-      "11th Score: 525/600"
+      "11th Score: 525/600",
+      "Tamil : 93",
+      "Maths : 93"
     ],
     "badge": "Achiever",
     "batch": "2024-2025"
@@ -69,7 +71,9 @@
     "class": "11th",
     "gender": "Male",
     "highlights": [
-      "Score: 518/600"
+      "Score: 518/600",
+      "Tamil : 93",
+      "computer : 100"
     ],
     "imageId": "boy1",
     "badge": "Achiever",
@@ -108,6 +112,62 @@
     "batch": "2024-2025"
   },
   {
+    "name": "Jabar Ali",
+    "class": "10th",
+    "gender": "Male",
+    "highlights": [
+      "438/500",
+      "Tamil : 92",
+      "Science : 95"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  },
+  {
+    "name": "Suhaila N",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "Maths: 494/600",
+      "Tamil : 93",
+      "History: 93"
+    ],
+    "badge": "Achiever",
+    "batch": "2023-2024"
+  },
+  {
+    "name": "Roshan Beema",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "Maths: 472/600",
+      "Computer : 93"
+    ],
+    "badge": "Achiever",
+    "batch": "2023-2024"
+  },
+  {
+    "name": "Safreen.M",
+    "class": "11th",
+    "gender": "Female",
+    "highlights": [
+      "Maths: 402/600"
+    ],
+    "badge": "Achiever",
+    "batch": "2023-2024"
+  },
+  {
+    "name": "Mohamed Thoufiq",
+    "class": "10th",
+    "gender": "Male",
+    "highlights": [
+      "Maths: Maths-100"
+    ],
+    "imageId": "boy1",
+    "badge": "Maths Topper",
+    "batch": "2023-2024"
+  },
+  {
     "name": "Mohamed Ismail",
     "class": "10th",
     "gender": "Male",
@@ -116,7 +176,17 @@
       "Maths: Maths-99"
     ],
     "badge": "Maths Topper",
-    "batch": "2024-2025"
+    "batch": "2023-2024"
+  },
+  {
+    "name": "Mohamed Isthak",
+    "class": "10th",
+    "gender": "Male",
+    "highlights": [
+      "Maths: Maths-98"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2023-2024"
   },
   {
     "name": "M.Safrin Fathima",
@@ -126,7 +196,7 @@
       "Maths : Maths-97"
     ],
     "badge": "Maths Topper",
-    "batch": "2024-2025"
+    "batch": "2023-2024"
   },
   {
     "name": "Mohamed Hussain",
@@ -136,7 +206,7 @@
       "Maths: Maths-95"
     ],
     "badge": "Maths Topper",
-    "batch": "2024-2025"
+    "batch": "2023-2024"
   },
   {
     "name": "M.Shirrin Muhmina",
@@ -145,69 +215,6 @@
     "highlights": [
       "Maths : Maths-90"
     ],
-    "badge": "Maths Topper",
-    "batch": "2024-2025"
-  },
-  {
-    "name": "Mohamed Thoufic",
-    "class": "10th",
-    "gender": "Male",
-    "highlights": [
-      "480/500"
-    ],
-    "imageId": "boy1",
-    "badge": "Maths Topper",
-    "batch": "2023-2024"
-  },
-  {
-    "name": "Ali Begam",
-    "class": "10th",
-    "gender": "Female",
-    "highlights": [
-      "471/500"
-    ],
-    "badge": "Maths Topper",
-    "batch": "2023-2024"
-  },
-  {
-    "name": "Safrin Fathima",
-    "class": "10th",
-    "gender": "Female",
-    "highlights": [
-      "419/500"
-    ],
-    "badge": "Maths Topper",
-    "batch": "2023-2024"
-  },
-  {
-    "name": "Mohamed Ismail",
-    "class": "10th",
-    "gender": "Male",
-    "highlights": [
-      "414/500"
-    ],
-    "imageId": "boy4",
-    "badge": "Maths Topper",
-    "batch": "2023-2024"
-  },
-  {
-    "name": "Mohamed Isthak",
-    "class": "10th",
-    "gender": "Male",
-    "highlights": [
-      "413/500"
-    ],
-    "badge": "Maths Topper",
-    "batch": "2023-2024"
-  },
-  {
-    "name": "Meera Shahif",
-    "class": "10th",
-    "gender": "Male",
-    "highlights": [
-      "410/500"
-    ],
-    "imageId": "boy3",
     "badge": "Maths Topper",
     "batch": "2023-2024"
   }

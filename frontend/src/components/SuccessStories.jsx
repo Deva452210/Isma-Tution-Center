@@ -24,19 +24,19 @@ const achievers = achieversData.map(a => ({
 // 🎨 STYLE MAP (colors per category)
 const styleMap = {
   elite: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   achiever: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   maths: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
@@ -177,7 +177,7 @@ const SuccessStories = () => {
     <section className="py-10 bg-[#FAFBFC]">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-black">
-          Our <span className="text-[#362A72]">Achievers</span>
+          Our <span className="text-[#00584A]">Achievers</span>
         </h2>
       </div>
 
@@ -188,7 +188,7 @@ const SuccessStories = () => {
       {/* View All Achievers Button */}
       <div className="flex justify-center mt-12 pb-6">
         <Link href="/all-achievers">
-          <button className="bg-[#362A72] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-2xl transform hover:-translate-y-1 flex items-center gap-2">
+          <button className="bg-[#00584A] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg hover:shadow-2xl transform hover:-translate-y-1 flex items-center gap-2">
             View All Achievers <ChevronRight className="w-5 h-5" />
           </button>
         </Link>

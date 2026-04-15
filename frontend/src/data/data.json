@@ -29,7 +29,8 @@
     "class": "12th",
     "gender": "Female",
     "highlights": [
-      "Computer : Computer-91"
+      "10th Score: 472/600",
+      "Computer : 91"
     ],
     "badge": "Top Performer",
     "batch": "2024-2025"
@@ -47,7 +48,7 @@
   {
     "name": "Ahmed Rila",
     "class": "12th",
-    "gender": "Female",
+    "gender": "Male",
     "highlights": [
       "10th Score: 414/500"
     ],
@@ -59,7 +60,9 @@
     "class": "11th",
     "gender": "Female",
     "highlights": [
-      "11th Score: 525/600"
+      "11th Score: 525/600",
+      "Tamil : 93",
+      "Maths : 93"
     ],
     "badge": "Achiever",
     "batch": "2024-2025"
@@ -69,7 +72,9 @@
     "class": "11th",
     "gender": "Male",
     "highlights": [
-      "Score: 518/600"
+      "Score: 518/600",
+      "Tamil : 93",
+      "computer : 100"
     ],
     "imageId": "boy1",
     "badge": "Achiever",
@@ -108,6 +113,17 @@
     "batch": "2024-2025"
   },
   {
+    "name": "Mohamed Thoufiq",
+    "class": "11th",
+    "gender": "Male",
+    "highlights": [
+      "Maths: Maths-100"
+    ],
+    "imageId": "boy1",
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
+  },
+  {
     "name": "Mohamed Ismail",
     "class": "10th",
     "gender": "Male",
@@ -117,6 +133,16 @@
     ],
     "badge": "Maths Topper",
     "batch": "2024-2025"
+  },
+  {
+    "name": "Mohamed Isthak",
+    "class": "10th",
+    "gender": "Male",
+    "highlights": [
+      "Maths: Maths-98"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2023-2024"
   },
   {
     "name": "M.Safrin Fathima",
