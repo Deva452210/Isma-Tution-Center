@@ -8,11 +8,13 @@ import boy1 from "../../assets/boy-1.png";
 import boy2 from "../../assets/boy-2.png";
 import boy3 from "../../assets/boy-3.png";
 import boy4 from "../../assets/boy-4.png";
+import SheikFaizal from "../../assets/SheikFaizal.png";
+import Jabar from "../../assets/Jabar.png";
 
 import achieversDataRaw from '../../data/all-achievers.json';
 
 const imageMap = {
-  boy1, boy2, boy3, boy4
+  boy1, boy2, boy3, boy4, SheikFaizal, Jabar
 };
 
 const allAchieversMapped = achieversDataRaw.map(a => ({
@@ -23,19 +25,19 @@ const allAchieversMapped = achieversDataRaw.map(a => ({
 // 🎨 STYLE MAP (colors per category)
 const styleMap = {
   elite: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   achiever: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
   },
   maths: {
-    bg: "from-[#362A72] to-black",
+    bg: "from-[#00584A] to-black",
     name: "text-yellow-300",
     class: "text-emerald-300",
     badge: "text-yellow-300"
@@ -157,7 +159,7 @@ export default function AllAchieversPage() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-12 mt-8">
         <div className="text-center md:text-left mb-6 md:mb-0">
           <h1 className="text-5xl font-black text-slate-800 tracking-tight">
-            Our Hall of <span className="text-[#362A72]">Fame</span>
+            Our Hall of <span className="text-[#00584A]">Fame</span>
           </h1>
           <p className="text-gray-500 mt-2 font-medium">Celebrating excellence across the years</p>
         </div>
@@ -183,7 +185,7 @@ export default function AllAchieversPage() {
         {class12th.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-6">
-              <h2 className="text-3xl font-bold text-slate-800">12th Grade <span className="text-[#362A72] font-black">Achievers</span></h2>
+              <h2 className="text-3xl font-bold text-slate-800">12th Grade <span className="text-[#00584A] font-black">Achievers</span></h2>
               <div className="flex-grow h-px bg-gray-200"></div>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
@@ -198,7 +200,7 @@ export default function AllAchieversPage() {
         {class11th.length > 0 && (
           <section>
             <div className="flex items-center gap-4 mb-6">
-              <h2 className="text-3xl font-bold text-slate-800">11th Grade <span className="text-[#362A72] font-black">Achievers</span></h2>
+              <h2 className="text-3xl font-bold text-slate-800">11th Grade <span className="text-[#00584A] font-black">Achievers</span></h2>
               <div className="flex-grow h-px bg-gray-200"></div>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">

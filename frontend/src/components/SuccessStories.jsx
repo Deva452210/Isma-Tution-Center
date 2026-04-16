@@ -9,11 +9,13 @@ import boy1 from "../assets/boy-1.png";
 import boy2 from "../assets/boy-2.png";
 import boy3 from "../assets/boy-3.png";
 import boy4 from "../assets/boy-4.png";
+import SheikFaizal from "../assets/SheikFaizal.png";
+import Jabar from "../assets/Jabar.png";
 
 import achieversData from '../data/data.json';
 
 const imageMap = {
-  boy1, boy2, boy3, boy4
+  boy1, boy2, boy3, boy4, SheikFaizal, Jabar
 };
 
 const achievers = achieversData.map(a => ({
