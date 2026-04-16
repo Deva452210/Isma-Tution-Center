@@ -1,60 +1,68 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import quoteIcon from '../assets/quote.svg';
 
 const testimonials = [
   {
     name: "Farhana",
-    class: "Class 10",
-    review: "Good teaching and very friendly staff.",
+    date: "Class 10",
+    review: "Good teaching and very friendly staff. Painless learning collection was surprised for me. nice experience",
     rating: 5,
   },
   {
     name: "Jazim",
-    class: "Class 9",
-    review: "Friendly teaching. Makes everything easy to understand.",
+    date: "Class 9",
+    review: "Friendly teaching. Makes everything easy to understand. i am happy with Service",
     rating: 5,
   },
   {
     name: "Syed Mohamed",
-    class: "Class 11",
-    review: "Very good coaching experience.",
-    rating: 5,
+    date: "Class 11",
+    review: "Very good coaching experience. The teachers were polite and efficient",
+    rating: 4,
   },
   {
     name: "Ibrahim",
-    class: "Class 10",
-    review: "Staff is friendly and supportive.",
+    date: "Class 10",
+    review: "Staff is friendly and supportive. Truly dedicated to helping students.",
     rating: 5,
   },
   {
     name: "Abdul Mujeeb",
-    class: "Class 12",
-    review: "Good teacher and hardworking staff.",
+    date: "Class 12",
+    review: "Good teacher and hardworking staff. Helped me score much better.",
     rating: 5,
   },
   {
     name: "Thoufiq",
-    class: "Class 9",
-    review: "Friendly teaching. Makes everything easy to understand.",
-    rating: 5,
+    date: "Class 9",
+    review: "Friendly teaching. Makes everything easy to understand from scratch.",
+    rating: 4,
   },
   {
     name: "Arshad",
-    class: "Class 11",
-    review: "Very good and supportive teachers.",
+    date: "Class 11",
+    review: "Very good and supportive teachers. Cleared all my doubts patiently.",
     rating: 5,
   },
   {
     name: "Adhil",
-    class: "Class 10",
-    review: "Always good. Staff is very friendly.",
+    date: "Class 10",
+    review: "Always good. Staff is very friendly and supportive for exams.",
     rating: 5,
   }
 ];
+
+const GoogleIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+  </svg>
+);
 
 const Testimonials = () => {
   const scrollRef = useRef(null);
@@ -62,10 +70,9 @@ const Testimonials = () => {
   const scroll = (direction) => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
-      // Scroll by picking a safe robust scroll distance (1 card width approx, or container width)
       const scrollTo = direction === 'left'
-        ? scrollLeft - (clientWidth > 600 ? 600 : clientWidth)
-        : scrollLeft + (clientWidth > 600 ? 600 : clientWidth);
+        ? scrollLeft - 320
+        : scrollLeft + 320;
 
       scrollRef.current.scrollTo({
         left: scrollTo,
@@ -75,57 +82,65 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-10 md:py-14 bg-white overflow-hidden relative">
+    <section className="py-12 md:py-20 bg-[#eaf7ef] overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-7xl">
+
         {/* Header Section */}
-        <div className="relative flex flex-col items-center text-center mb-12 lg:mb-20">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-2 py-1.5 pr-4 sm:pr-6 rounded-full bg-black text-white text-[13px] sm:text-base font-medium mb-8 sm:mb-10 shadow-[0_8px_30px_rgb(0,0,0,0.15)] relative">
-            <div className="absolute inset-0 rounded-full bg-black blur-xl opacity-20 -z-10"></div>
-            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#00584a] flex items-center justify-center shrink-0">
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-white text-white" />
+        <div className="mb-10 sm:mb-16 max-w-4xl">
+          {/* Top Row: Google Stars & Reviews */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-5">
+            <GoogleIcon />
+            <span className="font-bold text-gray-900 text-[17px]">4.6 Stars</span>
+            <div className="flex gap-0.5 ml-1">
+              {[1, 2, 3, 4].map(i => (
+                <Star key={i} className="w-[18px] h-[18px] fill-[#FABB05] text-[#FABB05]" />
+              ))}
+              <div className="relative w-[18px] h-[18px]">
+                <Star className="w-[18px] h-[18px] text-[#FABB05] absolute" />
+                <div className="absolute inset-0 overflow-hidden w-[50%]">
+                  <Star className="w-[18px] h-[18px] fill-[#FABB05] text-[#FABB05]" />
+                </div>
+              </div>
             </div>
-            <span>Rated 5/5 by our successful students</span>
+            <span className="text-gray-400 mx-1 hidden sm:inline-block">|</span>
+            <span className="text-[#555] font-medium text-[15px]">20+ Ratings & Reviews</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 max-w-4xl leading-[1.15] tracking-tight">
-            Words of praise from others<br className="hidden sm:block" /> about our teaching.
-          </h2>
-
-          {/* Navigation Arrows for Desktop (Hidden on small mobile) */}
-          <div className="hidden md:flex gap-3 absolute right-0 bottom-0 translate-y-1/2">
-            <button
-              onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:text-[#00584a] hover:border-[#00584a] transition-all bg-white shadow-sm"
-              aria-label="Scroll Left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:text-[#00584a] hover:border-[#00584a] transition-all bg-white shadow-sm"
-              aria-label="Scroll Right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+          {/* Bottom Row: Avatars & Headline */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <div className="flex -space-x-4 shrink-0">
+              {/* Decorative Avatars */}
+              <div className="w-[52px] h-[52px] rounded-full border-2 border-white bg-[#CCE2DF] overflow-hidden flex items-center justify-center relative shadow-sm z-20">
+                <User className="text-[#008080] w-6 h-6" />
+              </div>
+              <div className="w-[52px] h-[52px] rounded-full border-2 border-white bg-[#E6DFD7] overflow-hidden flex items-center justify-center relative shadow-sm z-10">
+                <User className="text-[#8B5A2B] w-6 h-6" />
+              </div>
+            </div>
+            <h2 className="text-[28px] sm:text-3xl md:text-[34px] leading-snug tracking-tight">
+              <span className="text-[#00584a] font-bold">Over 500+ happy students </span>
+              <span className="text-[#1A1A1A] font-extrabold block sm:inline">Isma Tuition Center</span>
+            </h2>
           </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative -mx-4 sm:mx-0">
-          {/* Faded edges to indicate scrollability */}
-          <div className="absolute top-0 bottom-0 left-0 w-4 sm:w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 bottom-0 right-0 w-4 sm:w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        {/* Carousel Area */}
+        <div className="relative">
+          {/* Faint Background Quote Decoration */}
+          <div className="absolute top-0 -left-2 sm:-left-4 z-0 pointer-events-none">
+            <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 60H0V40C0 15 10 0 30 0V15C20 15 15 20 15 35H30V60ZM75 60H50V40C50 15 60 0 80 0V15C70 15 65 20 65 35H80V60Z" fill="#d4eaddff" />
+            </svg>
+          </div>
 
-          {/* Scrolling track */}
           <div
             ref={scrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-10 px-4 sm:px-10 scrollbar-hide pt-4"
+            className="flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory pt-10 pb-4 px-2 sm:px-4 -mx-2 sm:-mx-4 z-10 relative"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style dangerouslySetInnerHTML={{
               __html: `
-              .scrollbar-hide::-webkit-scrollbar {
+              div::-webkit-scrollbar {
                   display: none;
               }
             `}} />
@@ -133,42 +148,54 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="snap-center snap-always shrink-0 w-[85vw] sm:w-[320px] md:w-[360px] bg-[#F8F9FB] rounded-3xl p-6 sm:p-8 md:hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] md:hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-gray-100/50"
+                className="snap-center shrink-0 w-[82vw] sm:w-[300px] bg-white rounded-2xl p-6 sm:p-7 shadow-[0_2px_12px_rgb(0,0,0,0.03)] flex flex-col border border-gray-100"
+                style={{ minHeight: '260px' }}
               >
-                <div>
-                  {/* Quotes Icon & Rating */}
-                  <div className="flex justify-between items-center mb-5 sm:mb-6">
-                    <Image src={quoteIcon} alt="Quote" className="w-7 h-7 sm:w-8 sm:h-8" />
-                    <div className="flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-gray-800 text-[15.5px] sm:text-[17px] font-medium leading-relaxed mb-8">
-                    {testimonial.review}
-                  </p>
+                {/* Card specific stars derived from rating property */}
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className={`w-[15px] h-[15px] ${i <= (testimonial.rating || 5) ? 'fill-[#FABB05] text-[#FABB05]' : 'fill-[#E5E7EB] text-[#E5E7EB]'}`}
+                    />
+                  ))}
                 </div>
 
-                <div className="flex items-center gap-3 mt-auto border-t border-gray-200/50 pt-5">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#00584a] flex items-center justify-center text-[#ffffff] font-bold text-sm sm:text-base shadow-sm shrink-0">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div className="truncate">
-                    <h4 className="font-bold text-gray-900 text-sm sm:text-[15px] truncate">{testimonial.name}</h4>
-                    <p className="text-[13px] text-gray-500">{testimonial.class}</p>
+                <p className="text-[#444444] text-[15.5px] leading-[1.6] mb-8 font-normal flex-grow">
+                  {testimonial.review}
+                </p>
+
+                <div className="border-t border-gray-100/80 pt-4 mt-auto">
+                  <div className="flex items-center gap-2">
+                    <div className="bg-gray-100 rounded-full p-1.5 shrink-0 flex items-center justify-center">
+                      <User className="w-3.5 h-3.5 text-gray-700" strokeWidth={2.5} />
+                    </div>
+                    <span className="font-bold text-[15px] text-[#222]">{testimonial.name}</span>
+                    <span className="text-[#777] text-[13px] font-medium ml-1">{testimonial.date}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Mobile Navigation indicator (Optional dot-like hint) */}
-        <div className="flex justify-center mt-2 md:hidden">
-          <p className="text-sm font-medium text-gray-500 flex items-center gap-2">
-            Swipe to see more <ChevronRight className="w-4 h-4 opacity-50" />
-          </p>
+          {/* Desktop Navigation Arrows (styled minimally to stay out of the way) */}
+          <div className="hidden lg:flex gap-3 absolute -top-20 right-4">
+            <button
+              onClick={() => scroll('left')}
+              className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-500 shadow-sm border border-gray-200 hover:text-teal-700 transition-colors"
+              aria-label="Scroll Left"
+            >
+              <ChevronLeft className="w-5 h-5 -ml-1" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-500 shadow-sm border border-gray-200 hover:text-teal-700 transition-colors"
+              aria-label="Scroll Right"
+            >
+              <ChevronRight className="w-5 h-5 -mr-1" />
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
