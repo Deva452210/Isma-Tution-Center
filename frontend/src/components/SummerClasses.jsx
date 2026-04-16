@@ -18,7 +18,7 @@ const programs = [
             "Quranic Learning & Islamic Studies"
         ],
         priceTag: "Low Cost Materials Provided",
-        theme: "bg-[#f0f9ff]/50 hover:bg-[#f0f9ff] border-[#e0f2fe]",
+        theme: "bg-[#f0f9ff]/50 hover:bg-[#f0f9ff] border-[#3bb0ff]",
         iconColor: "text-sky-500",
         badgeTheme: "bg-sky-100 text-sky-700",
         icon: <Sparkles className="w-6 h-6" />
@@ -36,7 +36,7 @@ const programs = [
         ],
         priceTag: "Enroll Soon!",
 
-        theme: "bg-[#f5f3ff]/50 hover:bg-[#f5f3ff] border-[#ede9fe]",
+        theme: "bg-[#f5f3ff]/50 hover:bg-[#f5f3ff] border-[#7c5dfc]",
         iconColor: "text-violet-500",
         badgeTheme: "bg-violet-100 text-violet-700",
 
@@ -54,7 +54,7 @@ const programs = [
             "Our Own Study Materials Provided"
         ],
         priceTag: "Low Cost - High Quality",
-        theme: "bg-[#ecfdf5]/50 hover:bg-[#ecfdf5] border-[#d1fae5]",
+        theme: "bg-[#ecfdf5]/50 hover:bg-[#ecfdf5] border-[#2f9e65]",
         iconColor: "text-emerald-500",
         badgeTheme: "bg-emerald-100 text-emerald-700",
         icon: <BookOpen className="w-6 h-6" />
@@ -71,7 +71,7 @@ const programs = [
             "Covers Full Syllabus"
         ],
         priceTag: "Special Fee: ₹10,000 / Subject",
-        theme: "bg-[#fffbeb]/50 hover:bg-[#fffbeb] border-[#fef3c7]",
+        theme: "bg-[#fffbeb]/50 hover:bg-[#fffbeb] border-[#ffd52e]",
         iconColor: "text-amber-500",
         badgeTheme: "bg-amber-100 text-amber-700",
         icon: <Star className="w-6 h-6" />
@@ -90,7 +90,7 @@ export default function SummerClasses() {
     };
 
     return (
-        <section className="py-20 md:py-28 bg-[#fafafa] relative overflow-hidden">
+        <section className="py-20 md:py-28 bg-gray-100  relative overflow-hidden">
             {/* Dynamic Abstract Background Elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-200/30 rounded-full blur-[100px] opacity-70 -translate-y-1/3 translate-x-1/3 -z-10 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-200/20 rounded-full blur-[120px] opacity-70 translate-y-1/3 -translate-x-1/3 -z-10 pointer-events-none"></div>
