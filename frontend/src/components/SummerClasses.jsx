@@ -128,7 +128,7 @@ export default function SummerClasses() {
                 {/* Horizontal Carousel Container */}
                 <div
                     ref={scrollRef}
-                    className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 lg:px-8 -mx-4 lg:-mx-8 z-10 relative mb-8 scroll-pl-4 lg:scroll-pl-8"
+                    className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-10 pt-4 px-4 lg:px-8 -mx-4 lg:-mx-8 z-10 relative mb-8 scroll-pl-4 lg:scroll-pl-8"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
                     <style dangerouslySetInnerHTML={{
