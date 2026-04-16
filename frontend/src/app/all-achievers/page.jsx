@@ -9,7 +9,7 @@ import boy2 from "../../assets/boy-2.png";
 import boy3 from "../../assets/boy-3.png";
 import boy4 from "../../assets/boy-4.png";
 import SheikFaizal from "../../assets/SheikFaizal.png";
-import Jabar from "../../assets/Jabar.png";
+import Jabar from "../../assets/jabar.png";
 
 import achieversDataRaw from '../../data/all-achievers.json';
 
