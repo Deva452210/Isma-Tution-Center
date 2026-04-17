@@ -115,7 +115,7 @@
   },
   {
     "name": "Mohamed Thoufiq",
-    "class": "11th",
+    "class": "10th",
     "gender": "Male",
     "highlights": [
       "Maths: Maths-100"
@@ -144,6 +144,16 @@
     ],
     "badge": "Maths Topper",
     "batch": "2023-2024"
+  },
+  {
+    "name": "Ali Begam",
+    "class": "10th",
+    "gender": "Female",
+    "highlights": [
+      "Maths : Maths-97"
+    ],
+    "badge": "Maths Topper",
+    "batch": "2024-2025"
   },
   {
     "name": "M.Safrin Fathima",
