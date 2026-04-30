@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Phone, Menu, X, LogOut } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../redux/slices/uiSlice';
@@ -10,6 +11,8 @@ import logo from '../assets/Isma-Logo.svg';
 const Header = () => {
   const isMobileMenuOpen = useSelector((state) => state.ui.isSidebarOpen);
   const dispatch = useDispatch();
+  const pathname = usePathname();
+  const isDark = pathname?.includes('dashboard') || pathname?.includes('math-lab');
 
   const [userName, setUserName] = useState(null);
   const [rollNumber, setRollNumber] = useState(null);
@@ -64,7 +67,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm relative">
+      <header className={`sticky top-0 z-50 w-full border-b shadow-sm relative transition-colors duration-500 ${isDark ? 'bg-[#111] border-[#333]' : 'bg-white border-gray-200'}`}>
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
 
           {/* Mobile Menu Icon */}
@@ -80,23 +83,23 @@ const Header = () => {
 
           {/* Logo */}
           <Link href="/" className="flex items-center" onClick={closeMenu}>
-            <img src={logo.src} alt="ISMA Logo" className="h-7 sm:h-10 w-auto mr-1.5 sm:mr-2" />
-            <span className="text-lg sm:text-2xl font-black italic tracking-tighter text-brand">ISMA</span>
-            <span className="text-lg sm:text-2xl font-black italic tracking-tighter ml-1 whitespace-nowrap">TUTION CENTER</span>
+            <img src={logo.src} alt="ISMA Logo" className={`h-7 sm:h-10 w-auto mr-1.5 sm:mr-2 ${isDark ? 'brightness-0 invert' : ''}`} />
+            <span className={`text-lg sm:text-2xl font-black italic tracking-tighter ${isDark ? 'text-white' : 'text-brand'}`}>ISMA</span>
+            <span className={`text-lg sm:text-2xl font-black italic tracking-tighter ml-1 whitespace-nowrap ${isDark ? 'text-gray-300' : ''}`}>TUTION CENTER</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex flex-1 justify-center space-x-8">
-            <Link href="/students-hub" className="text-gray-800 font-medium hover:text-brand transition-colors">Student's Hub</Link>
+            <Link href="/students-hub" className={`font-medium transition-colors ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-brand'}`}>Student's Hub</Link>
             {/* <Link href="/gallery" className="text-gray-800 font-medium hover:text-brand transition-colors">Graduates</Link> */}
           </nav>
 
           {/* Contact and Auth Actions */}
           <div className="flex items-center space-x-2 sm:space-x-4">
 
-            <a href="tel:+919043303030" className="hidden sm:flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full border border-brand hover:bg-green-50 transition-colors">
-              <Phone className="w-5 h-5 text-brand" />
-              <span className="hidden lg:block ml-2 font-semibold text-brand">73588 70782</span>
+            <a href="tel:+919043303030" className={`hidden sm:flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full border transition-colors ${isDark ? 'border-[#333] hover:bg-[#222] text-gray-300' : 'border-brand hover:bg-green-50 text-brand'}`}>
+              <Phone className="w-5 h-5" />
+              <span className="hidden lg:block ml-2 font-semibold">73588 70782</span>
             </a>
 
             {/* Auth Block */}
@@ -119,13 +122,21 @@ const Header = () => {
                     <div className="px-4 py-2 border-b border-gray-100">
                       <p className="text-sm font-medium text-gray-900 truncate">Hi, {userName}</p>
                     </div>
-                    {rollNumber === '1234' && (
+                    {rollNumber === '1234' ? (
                       <Link
                         href="/dashboard"
                         onClick={() => setIsDropdownOpen(false)}
                         className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center font-medium transition-colors border-b border-gray-100"
                       >
-                        Dashboard
+                        Admin Dashboard
+                      </Link>
+                    ) : (
+                      <Link
+                        href="/student-dashboard"
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center font-medium transition-colors border-b border-gray-100"
+                      >
+                        My Dashboard
                       </Link>
                     )}
                     <button

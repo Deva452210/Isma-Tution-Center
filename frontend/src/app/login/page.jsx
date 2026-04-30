@@ -25,27 +25,41 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || 'Login failed');
+      // 1. Admin Login Hardcoded Check
+      if (formData.rollNumber === '1234' && formData.password === 'Ismail1234') {
+        localStorage.setItem('token', 'admin-token');
+        localStorage.setItem('userName', 'Admin');
+        localStorage.setItem('rollNumber', '1234');
+        window.location.href = '/dashboard';
+        return;
       }
 
-      // Store token & user name securely
-      localStorage.setItem('token', data.token);
-      if (data.name) {
-        localStorage.setItem('userName', data.name);
+      // 2. Fetch Students from Google Sheets
+      const STUDENT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvVmlFewZ4mqrIg0t5tzx2mZiKmIXaRKXUB2N0L6AzlQXGkzzEwuzC-mXeFMObFa58/exec';
+      const res = await fetch(STUDENT_SCRIPT_URL);
+      const students = await res.json();
+
+      if (!Array.isArray(students)) {
+        throw new Error('Database error. Please try again later.');
       }
+
+      // 3. Find and Verify Student
+      const student = students.find(s => String(s.rollNumber) === String(formData.rollNumber));
+
+      if (!student) {
+        throw new Error('Student not found. Invalid roll number.');
+      }
+
+      if (String(student.password) !== String(formData.password)) {
+        throw new Error('Incorrect password.');
+      }
+
+      // 4. Store Details and Redirect
+      localStorage.setItem('token', 'student-token');
+      localStorage.setItem('userName', student.name || 'Student');
       localStorage.setItem('rollNumber', formData.rollNumber);
 
-      // Force a full refresh to trigger the Header to re-read localStorage
-      window.location.href = '/';
+      window.location.href = '/student-dashboard';
     } catch (err) {
       setError(err.message);
     } finally {

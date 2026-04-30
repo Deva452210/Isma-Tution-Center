@@ -35,17 +35,21 @@ export const metadata = {
   },
 };
 
+import { UploadProvider } from '../context/UploadContext';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
 
       <body className={roboto.className}>
         <ReduxProvider>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          {/* <Footer /> */}
+          <UploadProvider>
+            <Header />
+            <main className="min-h-[calc(100vh-80px)]">
+              {children}
+            </main>
+            {/* <Footer /> */}
+          </UploadProvider>
         </ReduxProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />

@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FileText, Download, FolderOpen, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { useGetMaterialsQuery } from '../../../redux/api/materialsApi';
+import useSWR from 'swr';
+
+const fetcher = url => fetch(url).then(res => res.json());
 
 export default function GradeMaterialPage({ params }) {
   const router = useRouter();
@@ -15,11 +17,16 @@ export default function GradeMaterialPage({ params }) {
 
   const subjects = ['Tamil', 'English', 'Maths', 'Science', 'Social Science'];
 
-  const { data: materials = [], isLoading: loading, isFetching } = useGetMaterialsQuery({
-    grade: gradeId,
-    category: activeTab,
-    subject: activeSubject
+  const materialsUrl = `https://script.google.com/macros/s/AKfycbxU0zXHGva3WDb_Jd032fjYY9044K-HbGWFWq6aY96cF77WoVkkujro9dR-Y5t3wYGN/exec?grade=${gradeId}`;
+  
+  const { data: allMaterials, isLoading: loading } = useSWR(materialsUrl, fetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 600000 // 10 minutes
   });
+
+  const materials = (allMaterials || []).filter(item => 
+    item.category === activeTab && item.subject === activeSubject
+  );
 
   return (
     <div className="min-h-screen bg-gray-50/50 pb-16">
