@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import SummerClasses from '../components/SummerClasses';
+
 import StatsSection from '../components/StatsSection';
 import FacultySection from '../components/FacultySection';
 import CoursesSection from '../components/CoursesSection';
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SummerClasses />
+
       <StatsSection />
       <SuccessStories />
       <FacultySection />

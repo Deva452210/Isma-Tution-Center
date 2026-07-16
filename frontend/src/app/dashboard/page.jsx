@@ -2,10 +2,34 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Users, BookOpen, GraduationCap, TrendingUp, Settings, Bell, Search, ArrowRight, Plus, X, User, Phone, MapPin, Hash, Calendar, Lock, Pencil, Upload } from 'lucide-react';
+import { Users, BookOpen, GraduationCap, TrendingUp, ArrowRight, Plus, X, Phone, Pencil, Trash2 } from 'lucide-react';
 import useSWR from 'swr';
 
 const fetcher = url => fetch(url).then(res => res.json());
+const STUDENTS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvVmlFewZ4mqrIg0t5tzx2mZiKmIXaRKXUB2N0L6AzlQXGkzzEwuzC-mXeFMObFa58/exec';
+const MATERIALS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxU0zXHGva3WDb_Jd032fjYY9044K-HbGWFWq6aY96cF77WoVkkujro9dR-Y5t3wYGN/exec';
+const MATH_LAB_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6Zxe3zPPomyRbNS9AuqCUHdjjxILZW7cA2KpVBKQ1GHNvqcGyJ8pDA8mLX1o8yBgF2Q/exec';
+
+const getStudentKey = (student) => `student-${student._id || student.id || student.rollNumber}`;
+const getMaterialKey = (material) => `${material.category}-${material._id || material.id || material.driveLink || `${material.grade}-${material.subject}-${material.chapterName}`}`;
+
+const isSameStudent = (student, target) => {
+  if (student._id && target._id) return String(student._id) === String(target._id);
+  if (student.id && target.id) return String(student.id) === String(target.id);
+  return String(student.rollNumber) === String(target.rollNumber);
+};
+
+const isSameMaterial = (material, target) => {
+  if (material._id && target._id) return String(material._id) === String(target._id);
+  if (material.id && target.id) return String(material.id) === String(target.id);
+  if (material.driveLink && target.driveLink) return String(material.driveLink) === String(target.driveLink);
+  return (
+    String(material.category) === String(target.category) &&
+    String(material.grade) === String(target.grade) &&
+    String(material.subject) === String(target.subject) &&
+    String(material.chapterName) === String(target.chapterName)
+  );
+};
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -24,13 +48,13 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('students'); // 'students', 'notes', 'pyqp', 'mathlab_subs', 'mathlab'
   const [listData, setListData] = useState({ students: [], notes: [], pyqp: [] });
   const [isFetchingLists, setIsFetchingLists] = useState(true);
+  const [deletingKey, setDeletingKey] = useState('');
 
   // Math Lab Tab States
   const [activeMathGrade, setActiveMathGrade] = useState('10');
   const [mathDifficultyFilter, setMathDifficultyFilter] = useState('All');
 
   // Math Lab States
-  const MATH_LAB_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6Zxe3zPPomyRbNS9AuqCUHdjjxILZW7cA2KpVBKQ1GHNvqcGyJ8pDA8mLX1o8yBgF2Q/exec';
   const { data: allMathSubmissions, mutate: mutateMathSubmissions } = useSWR(
     MATH_LAB_SCRIPT_URL + '?action=getAllSubmissions',
     fetcher,
@@ -191,13 +215,13 @@ export default function DashboardPage() {
   const subjects = ['Tamil', 'English', 'Maths', 'Science', 'Social Science'];
 
   const { data: studentsData, isLoading: loadingStudents, mutate: mutateStudents } = useSWR(
-    'https://script.google.com/macros/s/AKfycbwvVmlFewZ4mqrIg0t5tzx2mZiKmIXaRKXUB2N0L6AzlQXGkzzEwuzC-mXeFMObFa58/exec',
+    STUDENTS_SCRIPT_URL,
     fetcher,
     { revalidateOnFocus: false, dedupingInterval: 600000 }
   );
 
   const { data: materialsData, isLoading: loadingMaterials, mutate: mutateMaterials } = useSWR(
-    'https://script.google.com/macros/s/AKfycbxU0zXHGva3WDb_Jd032fjYY9044K-HbGWFWq6aY96cF77WoVkkujro9dR-Y5t3wYGN/exec',
+    MATERIALS_SCRIPT_URL,
     fetcher,
     { revalidateOnFocus: false, dedupingInterval: 600000 }
   );
@@ -241,7 +265,7 @@ export default function DashboardPage() {
     setUploadStatus('');
 
     try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbxU0zXHGva3WDb_Jd032fjYY9044K-HbGWFWq6aY96cF77WoVkkujro9dR-Y5t3wYGN/exec', {
+      const res = await fetch(MATERIALS_SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(materialForm)
@@ -285,7 +309,7 @@ export default function DashboardPage() {
     setStudentStatus('');
 
     try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbwvVmlFewZ4mqrIg0t5tzx2mZiKmIXaRKXUB2N0L6AzlQXGkzzEwuzC-mXeFMObFa58/exec', {
+      const res = await fetch(STUDENTS_SCRIPT_URL, {
         method: 'POST',
         body: JSON.stringify(studentForm),
         headers: {
@@ -348,14 +372,106 @@ export default function DashboardPage() {
     setIsEditMaterialOpen(true);
   };
 
+  const handleDeleteStudent = async (student) => {
+    const studentName = student.name || 'this student';
+    if (!confirm(`Delete ${studentName}? This will remove the student record.`)) return;
+
+    const key = getStudentKey(student);
+    setDeletingKey(key);
+    try {
+      const payload = {
+        action: 'deleteStudent',
+        entity: 'student',
+        id: student._id || student.id || student.rollNumber,
+        _id: student._id,
+        rollNumber: student.rollNumber,
+        photoUrl: student.photoUrl,
+      };
+
+      const res = await fetch(STUDENTS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (!res.ok || data.status === 'error') {
+        throw new Error(data.message || 'Failed to delete student');
+      }
+
+      setListData(prev => ({
+        ...prev,
+        students: prev.students.filter(item => !isSameStudent(item, student))
+      }));
+      setStats(prev => ({ ...prev, totalStudents: Math.max(prev.totalStudents - 1, 0) }));
+      mutateStudents();
+    } catch (err) {
+      console.error(err);
+      alert(err.message || 'Failed to delete student');
+    } finally {
+      setDeletingKey('');
+    }
+  };
+
+  const handleDeleteMaterial = async (material) => {
+    const materialType = material.category === 'pyqp' ? 'question paper' : 'note';
+    const materialTitle = material.chapterName || `this ${materialType}`;
+    if (!confirm(`Delete ${materialTitle}? This will remove the ${materialType} record.`)) return;
+
+    const key = getMaterialKey(material);
+    setDeletingKey(key);
+    try {
+      const payload = {
+        action: 'deleteMaterial',
+        entity: 'material',
+        id: material._id || material.id || material.driveLink,
+        _id: material._id,
+        category: material.category,
+        grade: material.grade,
+        subject: material.subject,
+        chapterName: material.chapterName,
+        driveLink: material.driveLink,
+        fileId: material.fileId,
+      };
+
+      const res = await fetch(MATERIALS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (!res.ok || data.status === 'error') {
+        throw new Error(data.message || `Failed to delete ${materialType}`);
+      }
+
+      const category = material.category === 'pyqp' ? 'pyqp' : 'notes';
+      setListData(prev => ({
+        ...prev,
+        [category]: prev[category].filter(item => !isSameMaterial(item, material))
+      }));
+      setStats(prev => ({
+        ...prev,
+        notesCount: category === 'notes' ? Math.max(prev.notesCount - 1, 0) : prev.notesCount,
+        pyqpCount: category === 'pyqp' ? Math.max(prev.pyqpCount - 1, 0) : prev.pyqpCount,
+      }));
+      mutateMaterials();
+    } catch (err) {
+      console.error(err);
+      alert(err.message || `Failed to delete ${materialType}`);
+    } finally {
+      setDeletingKey('');
+    }
+  };
+
   const handleEditStudentSubmit = async (e) => {
     e.preventDefault();
     setIsSubmittingStudent(true);
     setStudentStatus('');
     try {
-      const payload = { action: 'updateStudent', ...studentForm };
+      const payload = { action: 'update', ...studentForm };
       
-      const res = await fetch('https://script.google.com/macros/s/AKfycbwvVmlFewZ4mqrIg0t5tzx2mZiKmIXaRKXUB2N0L6AzlQXGkzzEwuzC-mXeFMObFa58/exec', {
+      const res = await fetch(STUDENTS_SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
@@ -505,20 +621,40 @@ export default function DashboardPage() {
                     listData.students.length === 0 ? (
                       <p className="text-gray-400 text-sm text-center mt-10">No students added yet.</p>
                     ) : (
-                      listData.students.map((student) => (
-                        <div key={student._id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
-                          <div>
-                            <h4 className="font-bold text-white">{student.name} <span className="text-xs ml-2 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">{student.rollNumber}</span></h4>
-                            <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
-                              <span><Phone className="inline w-3 h-3 mr-1" />{student.phone}</span>
-                              <span><GraduationCap className="inline w-3 h-3 mr-1" />Class {student.grade}</span>
-                            </p>
+                      listData.students.map((student) => {
+                        const studentKey = getStudentKey(student);
+
+                        return (
+                          <div key={studentKey} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
+                            <div>
+                              <h4 className="font-bold text-white">{student.name} <span className="text-xs ml-2 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">{student.rollNumber}</span></h4>
+                              <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
+                                <span><Phone className="inline w-3 h-3 mr-1" />{student.phone}</span>
+                                <span><GraduationCap className="inline w-3 h-3 mr-1" />Class {student.grade}</span>
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <button
+                                onClick={() => openEditStudent(student)}
+                                className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors"
+                                aria-label={`Edit ${student.name}`}
+                                title="Edit student"
+                              >
+                                <Pencil className="w-5 h-5" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteStudent(student)}
+                                disabled={deletingKey === studentKey}
+                                className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                aria-label={`Delete ${student.name}`}
+                                title="Delete student"
+                              >
+                                <Trash2 className={`w-5 h-5 ${deletingKey === studentKey ? 'animate-pulse' : ''}`} />
+                              </button>
+                            </div>
                           </div>
-                          <button onClick={() => openEditStudent(student)} className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors flex-shrink-0">
-                            <Pencil className="w-5 h-5" />
-                          </button>
-                        </div>
-                      ))
+                        );
+                      })
                     )
                   )}
 
@@ -526,20 +662,40 @@ export default function DashboardPage() {
                     listData.notes.length === 0 ? (
                       <p className="text-gray-400 text-sm text-center mt-10">No notes added yet.</p>
                     ) : (
-                      listData.notes.map((note) => (
-                        <div key={note._id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
-                          <div>
-                            <h4 className="font-bold text-white">{note.chapterName}</h4>
-                            <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
-                              <span className="font-medium text-brand">{note.subject}</span>
-                              <span>Class {note.grade}</span>
-                            </p>
+                      listData.notes.map((note) => {
+                        const noteKey = getMaterialKey(note);
+
+                        return (
+                          <div key={noteKey} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
+                            <div>
+                              <h4 className="font-bold text-white">{note.chapterName}</h4>
+                              <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
+                                <span className="font-medium text-brand">{note.subject}</span>
+                                <span>Class {note.grade}</span>
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <button
+                                onClick={() => openEditMaterial(note)}
+                                className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors"
+                                aria-label={`Edit ${note.chapterName}`}
+                                title="Edit note"
+                              >
+                                <Pencil className="w-5 h-5" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteMaterial(note)}
+                                disabled={deletingKey === noteKey}
+                                className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                aria-label={`Delete ${note.chapterName}`}
+                                title="Delete note"
+                              >
+                                <Trash2 className={`w-5 h-5 ${deletingKey === noteKey ? 'animate-pulse' : ''}`} />
+                              </button>
+                            </div>
                           </div>
-                          <button onClick={() => openEditMaterial(note)} className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors flex-shrink-0">
-                            <Pencil className="w-5 h-5" />
-                          </button>
-                        </div>
-                      ))
+                        );
+                      })
                     )
                   )}
 
@@ -547,20 +703,40 @@ export default function DashboardPage() {
                     listData.pyqp.length === 0 ? (
                       <p className="text-gray-400 text-sm text-center mt-10">No question papers added yet.</p>
                     ) : (
-                      listData.pyqp.map((paper) => (
-                        <div key={paper._id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
-                          <div>
-                            <h4 className="font-bold text-white">{paper.chapterName}</h4>
-                            <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
-                              <span className="font-medium text-purple-600">{paper.subject}</span>
-                              <span>Class {paper.grade}</span>
-                            </p>
+                      listData.pyqp.map((paper) => {
+                        const paperKey = getMaterialKey(paper);
+
+                        return (
+                          <div key={paperKey} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:shadow-sm transition-all gap-4">
+                            <div>
+                              <h4 className="font-bold text-white">{paper.chapterName}</h4>
+                              <p className="text-sm text-gray-400 mt-1 flex items-center gap-3">
+                                <span className="font-medium text-purple-600">{paper.subject}</span>
+                                <span>Class {paper.grade}</span>
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <button
+                                onClick={() => openEditMaterial(paper)}
+                                className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors"
+                                aria-label={`Edit ${paper.chapterName}`}
+                                title="Edit question paper"
+                              >
+                                <Pencil className="w-5 h-5" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteMaterial(paper)}
+                                disabled={deletingKey === paperKey}
+                                className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                aria-label={`Delete ${paper.chapterName}`}
+                                title="Delete question paper"
+                              >
+                                <Trash2 className={`w-5 h-5 ${deletingKey === paperKey ? 'animate-pulse' : ''}`} />
+                              </button>
+                            </div>
                           </div>
-                          <button onClick={() => openEditMaterial(paper)} className="p-2 text-gray-400 hover:text-brand hover:bg-green-50 rounded-lg transition-colors flex-shrink-0">
-                            <Pencil className="w-5 h-5" />
-                          </button>
-                        </div>
-                      ))
+                        );
+                      })
                     )
                   )}
 
